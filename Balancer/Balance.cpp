@@ -64,7 +64,7 @@ void balance()
   // this is a simpler technique: for a balancing robot, as long
   // as it is balancing, we know that the angle must be zero on
   // average, or we would fall over.
-  angle = angle * 999 / 1000;
+  angle = angle * 999 / 1000; //Takes the current angle and tries to make it 0, by turning the motor the other way
 
   // This variable measures how close we are to our basic
   // balancing goal - being on a trajectory that would cause us
@@ -103,7 +103,7 @@ void balance()
   // will prevent the robot from rotating as it rocks back and
   // forth due to differences in the motors, and it allows the
   // robot to perform controlled turns.
-  int16_t distanceDiff = distanceLeft - distanceRight;
+  int16_t distanceDiff = distanceLeft - distanceRight; //Counts the amout of teeth rotated, int16 means its a "16bit type" int
 
   motors.setSpeeds(
     motorSpeed + distanceDiff * DISTANCE_DIFF_RESPONSE / 100,
@@ -185,7 +185,7 @@ void balanceUpdate()
 {
   static uint16_t lastMillis;
   uint16_t ms = millis();
-  static uint8_t count = 0;
+  static uint8_t count = 0; //Unassigned int
 
   // Perform the balance updates at 100 Hz.
   if ((uint16_t)(ms - lastMillis) < UPDATE_TIME_MS) { return; }
